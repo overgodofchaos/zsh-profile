@@ -16,6 +16,9 @@ fi
 source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
 antidote load
 
+# fzf keybindings
+export FZF_DEFAULT_OPTS='--bind=bspace:backward-delete-char/eof'
+source <(fzf --zsh)
 
 # === fzf-tab + completion settings ===
 # Disable default completion menu (important for fzf-tab)
