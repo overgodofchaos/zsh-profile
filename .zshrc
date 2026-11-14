@@ -3,6 +3,9 @@ export LANG=en_US.UTF-8
 export LC_MESSAGES=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+export FZF_DEFAULT_OPTS='--smart-case --bind=bspace:backward-delete-char/eof'
+export ZSHZ_CASE=smart
+
 # p10k instant prompt
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -18,7 +21,6 @@ source ${ZDOTDIR:-$HOME}/.antidote/antidote.zsh
 antidote load
 
 # fzf keybindings
-export FZF_DEFAULT_OPTS='--bind=bspace:backward-delete-char/eof'
 source <(fzf --zsh)
 
 # === fzf-tab + completion settings ===
