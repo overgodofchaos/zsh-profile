@@ -9,14 +9,12 @@ fi
 set -euo pipefail
 
 # Check previous installation
-if [[ -f "$HOME/.zshrc" ]]; then
-    echo "Error: .zshrc already exists"
-    exit 1
-fi
+if [[ -f "$HOME/.zshrc" || -f "$HOME/.zsh_plugins.txt" ]]; then
+    read -r -p "Existing files will be backed up and replaced. Continue? [y/N] " answer
+    [[ "$answer" =~ ^[Yy]$ ]] || exit 1
 
-if [[ -f "$HOME/.zsh_plugins.txt" ]]; then
-    echo "Error: .zsh_plugins.txt already exists"
-    exit 1
+    [[ ! -f "$HOME/.zshrc" ]] || mv -f "$HOME/.zshrc" "$HOME/.zshrc.bak"
+    [[ ! -f "$HOME/.zsh_plugins.txt" ]] || mv -f "$HOME/.zsh_plugins.txt" "$HOME/.zsh_plugins.txt.bak"
 fi
 
 # Resolve the script directory path
