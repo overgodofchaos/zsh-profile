@@ -1,7 +1,10 @@
 # env
-export LANG=en_US.UTF-8
-export LC_MESSAGES=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+if env -i PATH="$PATH" locale -a 2>/dev/null |
+    grep -qiE '^en_US\.utf-?8$'; then
+    export LANG=en_US.UTF-8
+    export LC_MESSAGES=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+fi
 
 export FZF_DEFAULT_OPTS='--smart-case --bind=bspace:backward-delete-char/eof'
 export ZSHZ_CASE=smart
