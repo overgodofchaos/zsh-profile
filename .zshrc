@@ -1,9 +1,11 @@
 # env
-if env -i PATH="$PATH" locale -a 2>/dev/null |
-    grep -qiE '^en_US\.utf-?8$'; then
-    export LANG=en_US.UTF-8
-    export LC_MESSAGES=en_US.UTF-8
-    export LC_ALL=en_US.UTF-8
+if ! { command -v midclt >/dev/null 2>&1 && [[ -f /data/freenas-v1.db ]]; }; then
+    if env -i PATH="$PATH" locale -a 2>/dev/null |
+        grep -qiE '^en_US\.utf-?8$'; then
+        export LANG=en_US.UTF-8
+        export LC_MESSAGES=en_US.UTF-8
+        export LC_ALL=en_US.UTF-8
+    fi
 fi
 
 export FZF_DEFAULT_OPTS='--smart-case --bind=bspace:backward-delete-char/eof'
