@@ -23,6 +23,7 @@ if [[ -f "$HOME/.zshrc" || -f "$HOME/.zsh_plugins.txt" ]]; then
 
     [[ ! -f "$HOME/.zshrc" ]] || mv -f "$HOME/.zshrc" "$HOME/.zshrc.bak"
     [[ ! -f "$HOME/.zsh_plugins.txt" ]] || mv -f "$HOME/.zsh_plugins.txt" "$HOME/.zsh_plugins.txt.bak"
+    [[ ! -f "$HOME/.zshrc_utils.zsh" ]] || mv -f "$HOME/.zshrc_utils.zsh" "$HOME/.zshrc_utils.zsh.bak"
 fi
 
 
@@ -62,7 +63,8 @@ else
 fi
 
 # Copy base files
-cp "$SCRIPT_DIR/.p10k.zsh" "$SCRIPT_DIR/.zshrc" "$SCRIPT_DIR/.zsh_plugins.txt" "$HOME/"
+cp "$SCRIPT_DIR/.p10k.zsh" "$SCRIPT_DIR/.zshrc" "$SCRIPT_DIR/.zsh_plugins.txt" "$SCRIPT_DIR/.zshrc_utils.zsh" "$HOME/"
+[[ -f "$HOME/.zshrc_entrypoint.zsh" ]] || cp "$SCRIPT_DIR/.zshrc_entrypoint.zsh" "$HOME/"
 
 # Success
 echo "Success. You can change default shell with:"
